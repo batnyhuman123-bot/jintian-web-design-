@@ -3,12 +3,13 @@
 import { motion, useMotionValue, useSpring, useScroll } from "framer-motion";
 import { useEffect } from "react";
 
+/** Minimal global layer: soft cursor bloom + static grain + hairline scroll progress */
 export function PageChrome() {
   const { scrollYProgress } = useScroll();
   const glowX = useMotionValue(0);
   const glowY = useMotionValue(0);
-  const springX = useSpring(glowX, { stiffness: 120, damping: 22, mass: 0.35 });
-  const springY = useSpring(glowY, { stiffness: 120, damping: 22, mass: 0.35 });
+  const springX = useSpring(glowX, { stiffness: 50, damping: 28, mass: 0.8 });
+  const springY = useSpring(glowY, { stiffness: 50, damping: 28, mass: 0.8 });
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
@@ -23,23 +24,23 @@ export function PageChrome() {
     <>
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed inset-0 z-[45] mix-blend-soft-light"
-        style={{ opacity: 0.55 }}
+        className="pointer-events-none fixed inset-0 z-[40] mix-blend-overlay"
+        style={{ opacity: 0.22 }}
       >
         <motion.div
-          className="absolute h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(184,149,106,0.14),transparent_62%)] blur-3xl"
+          className="absolute h-[min(70vw,520px)] w-[min(70vw,520px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.07),transparent_68%)] blur-3xl"
           style={{ left: springX, top: springY }}
         />
       </motion.div>
 
       <div
         aria-hidden
-        className="grain-overlay pointer-events-none fixed inset-0 z-[60] animate-grain opacity-70 mix-blend-multiply"
+        className="grain-overlay pointer-events-none fixed inset-0 z-[55] opacity-50 mix-blend-multiply"
       />
 
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 right-0 top-0 z-[70] h-[2px] origin-left bg-gradient-to-r from-jintian-bronze via-white/80 to-jintian-bronze"
+        className="pointer-events-none fixed left-0 right-0 top-0 z-[70] h-px origin-left bg-jintian-mahogany/90"
         style={{ scaleX: scrollYProgress }}
       />
     </>

@@ -5,8 +5,6 @@
 :root {
   --jintian-mahogany: #420d09;
   --jintian-cream: #faf7f2;
-  --jintian-bronze: #b8956a;
-  --jintian-glow: rgba(255, 255, 255, 0.06);
 }
 
 @layer base {
@@ -17,7 +15,7 @@
     @apply bg-jintian-cream text-jintian-black antialiased;
   }
   ::selection {
-    @apply bg-jintian-mahogany/20 text-jintian-mahogany;
+    @apply bg-jintian-mahogany/15 text-jintian-mahogany;
   }
 }
 
@@ -25,20 +23,15 @@
   .text-balance {
     text-wrap: balance;
   }
+  /** Very subtle paper texture — calmer than animated grain */
   .grain-overlay {
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
   }
-  .glass-panel {
-    @apply border border-white/40 bg-white/10 shadow-glass backdrop-blur-xl;
-  }
-  .glass-panel-dark {
-    @apply border border-white/10 bg-black/25 shadow-glass backdrop-blur-2xl;
+  .divider-fine {
+    @apply h-px w-full bg-jintian-black/[0.08];
   }
   .nav-underline {
-    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100;
-  }
-  .nav-underline-mahogany {
-    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-left after:scale-x-0 after:bg-jintian-mahogany after:transition-transform after:duration-300 hover:after:scale-x-100;
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100;
   }
 }

@@ -6,7 +6,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
   display: "swap",
-  weight: ["500", "600"],
+  weight: ["400", "500", "600"],
 });
 
 const cormorant = Cormorant_Garamond({
@@ -62,7 +62,7 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${cormorant.variable}`}
     >
-      <body className="min-h-screen bg-jintian-cream font-sans font-medium antialiased">
+      <body className="min-h-screen bg-jintian-cream font-sans font-normal antialiased">
         {children}
       </body>
     </html>

@@ -36,14 +36,13 @@ export function MissionSection() {
     if (!el) return;
 
     const tween = gsap.to(el, {
-      y: -36,
-      rotate: -1.5,
+      y: -20,
       ease: "none",
       scrollTrigger: {
         trigger: root.current,
         start: "top bottom",
         end: "bottom top",
-        scrub: 1.1,
+        scrub: 1.85,
       },
     });
 
@@ -56,37 +55,23 @@ export function MissionSection() {
   return (
     <section
       ref={root}
-      className="relative overflow-hidden bg-jintian-cream py-24 md:py-32 lg:py-40"
+      className="relative overflow-hidden border-t border-jintian-black/[0.06] bg-jintian-cream py-32 md:py-44 lg:py-52"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-24 top-10 h-[420px] w-[420px] bg-[radial-gradient(circle_at_center,rgba(66,13,9,0.06),transparent_68%)]"
-      />
-      <div
-        aria-hidden
-        className="grain-overlay pointer-events-none absolute inset-0 opacity-40 mix-blend-multiply"
+        className="pointer-events-none absolute -left-32 top-24 h-[min(100vw,480px)] w-[min(100vw,480px)] bg-[radial-gradient(circle_at_center,rgba(66,13,9,0.04),transparent_70%)]"
       />
 
-      <div className="relative z-10 mx-auto grid max-w-[1200px] items-center gap-14 px-6 md:grid-cols-2 md:gap-16 md:px-10 lg:px-14">
-        <div className="relative">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -left-10 top-1/2 h-72 w-72 -translate-y-1/2 opacity-[0.07]"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23420D09' d='M50 5c8 12 20 22 20 38a20 20 0 11-40 0c0-16 12-26 20-38z'/%3E%3C/svg%3E\")",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-            }}
-          />
+      <div className="relative z-10 mx-auto grid max-w-[1120px] items-start gap-20 px-8 md:grid-cols-2 md:gap-x-16 md:gap-y-0 lg:gap-x-24 lg:px-16">
+        <div className="relative md:pt-6">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-label text-jintian-mahogany/75">
+            <p className="text-[10px] font-medium uppercase tracking-label text-jintian-black/45">
               Our Mission
             </p>
-            <h2 className="mt-5 max-w-xl font-serif text-3xl leading-[1.15] text-jintian-mahogany md:text-4xl lg:text-[2.75rem]">
+            <h2 className="mt-8 max-w-lg font-serif text-[2rem] leading-[1.12] tracking-editorial text-jintian-mahogany md:text-[2.35rem] lg:text-[2.5rem]">
               We exist to help men perform at their best.
             </h2>
-            <p className="mt-6 max-w-md font-sans text-sm font-medium leading-relaxed text-jintian-black/72 md:text-[15px]">
+            <p className="mt-10 max-w-md font-sans text-[14px] font-normal leading-[1.8] text-jintian-black/65">
               We are committed to creating premium wellness products backed by
               science, quality ingredients, and daily consistency.
             </p>
@@ -94,22 +79,22 @@ export function MissionSection() {
         </div>
 
         <div className="relative">
-          <div className="grid gap-4 sm:grid-cols-1">
+          <div className="grid gap-3">
             {features.map((f, i) => (
               <Reveal key={f.title} delay={0.05 * i}>
                 <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 320, damping: 24 }}
-                  className="flex items-start gap-4 rounded-2xl border border-white/60 bg-white/55 p-5 shadow-glass backdrop-blur-md"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="flex items-start gap-5 rounded-lg border border-jintian-black/[0.08] bg-white/70 px-6 py-5 shadow-editorial"
                 >
-                  <span className="mt-0.5 inline-flex rounded-full border border-jintian-mahogany/10 bg-jintian-mahogany/5 p-3 text-jintian-mahogany">
-                    <f.icon className="h-5 w-5" strokeWidth={1.2} />
+                  <span className="mt-0.5 text-jintian-mahogany/90">
+                    <f.icon className="h-5 w-5" strokeWidth={1} />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-jintian-mahogany">
+                    <p className="text-sm font-medium tracking-wide text-jintian-mahogany">
                       {f.title}
                     </p>
-                    <p className="mt-1 font-sans text-xs font-medium leading-relaxed text-jintian-black/65 md:text-sm">
+                    <p className="mt-2 font-sans text-[13px] font-normal leading-relaxed text-jintian-black/60">
                       {f.body}
                     </p>
                   </div>
@@ -120,22 +105,17 @@ export function MissionSection() {
 
           <div
             ref={visual}
-            className="pointer-events-none relative mx-auto mt-10 max-w-md md:absolute md:-right-6 md:bottom-[-4rem] md:mt-0 md:max-w-sm"
+            className="relative mx-auto mt-16 max-w-md md:absolute md:-right-4 md:bottom-0 md:mt-0 md:max-w-[min(100%,380px)] lg:-right-8"
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/50 bg-gradient-to-br from-white/80 to-jintian-cream shadow-luxury">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-md border border-jintian-black/[0.08] bg-jintian-cream shadow-editorial">
               <Image
                 src="https://images.unsplash.com/photo-1532187861976-deb9a115fada?auto=format&fit=crop&w=900&q=80"
                 alt="Scientific botanical study"
                 fill
-                className="object-cover mix-blend-multiply"
-                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-jintian-cream/90 via-transparent to-transparent" />
-              <motion.div
-                className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-white/35 shadow-[0_0_60px_-10px_rgba(184,149,106,0.5)] backdrop-blur-md"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              />
+              <div className="absolute inset-0 bg-gradient-to-t from-jintian-cream/95 via-transparent to-transparent" />
             </div>
           </div>
         </div>

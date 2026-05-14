@@ -31,65 +31,63 @@ export function BrandOriginSection() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "8%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-3%", "4%"]);
 
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-jintian-cream py-28 md:py-36 lg:py-44"
+      className="relative overflow-hidden bg-jintian-cream py-32 md:py-44 lg:py-52"
     >
       <motion.div style={{ y }} className="pointer-events-none absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2000&q=80"
           alt=""
           fill
-          className="object-cover opacity-[0.22] saturate-[0.65]"
+          className="object-cover opacity-[0.14] saturate-[0.55]"
           sizes="100vw"
           priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-jintian-cream via-jintian-cream/85 to-jintian-cream" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#FAF7F2_70%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-jintian-cream via-jintian-cream/92 to-jintian-cream" />
       </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-[1200px] px-6 md:px-10 lg:px-14">
+      <div className="relative z-10 mx-auto max-w-[1120px] px-8 md:px-12 lg:px-16">
         <Reveal className="text-center">
-          <h2 className="font-serif text-5xl tracking-[0.2em] text-jintian-mahogany sm:text-6xl md:text-7xl">
+          <h2 className="font-serif text-5xl tracking-[0.22em] text-jintian-mahogany sm:text-6xl md:text-7xl">
             JINTIAN
           </h2>
-          <p className="mt-5 font-sans text-sm font-medium text-jintian-black/70 md:text-base">
+          <p className="mx-auto mt-8 max-w-md font-sans text-[13px] font-normal leading-relaxed tracking-wide text-jintian-black/60 md:text-sm">
             JINTIAN means &ldquo;Today&rdquo; in Mandarin
           </p>
         </Reveal>
 
-        <Reveal delay={0.08} className="mx-auto mt-14 max-w-xl">
-          <div className="flex items-center gap-4">
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-jintian-mahogany/35" />
-            <p className="text-center font-serif text-xl italic text-jintian-mahogany md:text-2xl">
+        <Reveal delay={0.1} className="mx-auto mt-20 max-w-2xl">
+          <div className="flex items-center gap-6 md:gap-10">
+            <span className="h-px flex-1 bg-jintian-black/[0.1]" />
+            <p className="shrink text-center font-serif text-xl italic leading-snug text-jintian-mahogany md:text-2xl">
               &ldquo;Today is where strength begins&rdquo;
             </p>
-            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-jintian-mahogany/35" />
+            <span className="h-px flex-1 bg-jintian-black/[0.1]" />
           </div>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
+        <div className="mt-24 grid gap-8 md:grid-cols-3 md:gap-10 lg:gap-12">
           {cards.map((c, i) => (
             <Reveal key={c.title} delay={0.06 * i}>
               <motion.div
-                whileHover={{ y: -8, rotateX: 2, rotateY: -2 }}
-                transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                style={{ transformStyle: "preserve-3d" }}
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className={cn(
-                  "group relative h-full overflow-hidden rounded-2xl border border-white/60 bg-white/25 p-8 shadow-luxury backdrop-blur-xl",
-                  "before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/40 before:to-transparent before:opacity-0 before:transition-opacity before:duration-500 group-hover:before:opacity-100",
+                  "flex h-full flex-col border border-jintian-black/[0.08] bg-white/50 p-9 shadow-card backdrop-blur-[2px]",
+                  "rounded-lg md:rounded-md",
                 )}
               >
-                <div className="mb-6 inline-flex rounded-full border border-jintian-mahogany/15 bg-jintian-mahogany/5 p-4 text-jintian-mahogany shadow-[0_0_40px_-8px_rgba(184,149,106,0.55)] transition group-hover:shadow-[0_0_48px_-6px_rgba(184,149,106,0.85)]">
-                  <c.icon className="h-6 w-6" strokeWidth={1.15} />
+                <div className="mb-8 inline-flex w-fit border border-jintian-black/[0.08] bg-jintian-cream/80 p-3.5 text-jintian-mahogany">
+                  <c.icon className="h-5 w-5" strokeWidth={1} />
                 </div>
-                <p className="text-[11px] font-semibold uppercase tracking-label text-jintian-mahogany/80">
+                <p className="text-[10px] font-medium uppercase tracking-label text-jintian-black/50">
                   {c.title}
                 </p>
-                <p className="mt-3 font-sans text-sm font-medium leading-relaxed text-jintian-black/75">
+                <p className="mt-4 font-sans text-[13px] font-normal leading-[1.75] text-jintian-black/70">
                   {c.body}
                 </p>
               </motion.div>

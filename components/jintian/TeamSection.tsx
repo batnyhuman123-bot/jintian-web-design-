@@ -30,59 +30,46 @@ const founders = [
 
 export function TeamSection() {
   return (
-    <section className="relative overflow-hidden bg-jintian-cream pb-24 pt-8 md:pb-32 md:pt-10 lg:pb-40">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 text-jintian-mahogany/12">
-        <svg
-          className="h-full w-full"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          aria-hidden
-        >
-          <motion.path
-            d="M0,64 C240,20 480,110 720,64 C960,18 1200,108 1440,56 L1440,120 L0,120 Z"
-            fill="currentColor"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          />
-        </svg>
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-[1200px] px-6 pt-16 md:px-10 md:pt-20 lg:px-14">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="font-serif text-3xl text-jintian-mahogany md:text-4xl">
+    <section className="relative overflow-hidden border-t border-jintian-black/[0.06] bg-jintian-cream pb-32 pt-24 md:pb-44 md:pt-28 lg:pb-52">
+      <div className="relative z-10 mx-auto max-w-[1120px] px-8 lg:px-16">
+        <Reveal className="mx-auto max-w-xl text-center">
+          <p className="text-[10px] font-medium uppercase tracking-label text-jintian-black/45">
+            Team
+          </p>
+          <h2 className="mt-8 font-serif text-[2rem] tracking-editorial text-jintian-mahogany md:text-4xl">
             A Team Driven by Purpose
           </h2>
-          <p className="mt-4 font-sans text-sm font-medium leading-relaxed text-jintian-black/68 md:text-[15px]">
+          <p className="mx-auto mt-6 max-w-md font-sans text-[14px] font-normal leading-[1.8] text-jintian-black/60">
             A dedicated team driven by innovation, performance, and commitment.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-8 md:grid-cols-3">
+        <div className="mt-20 grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-10">
           {founders.map((f, i) => (
-            <Reveal key={i} delay={0.06 * i}>
+            <Reveal key={i} delay={0.07 * i}>
               <motion.article
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                className="overflow-hidden rounded-3xl border border-white/60 bg-white/55 shadow-luxury backdrop-blur-md"
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="flex flex-col border border-jintian-black/[0.1] bg-white/60 shadow-editorial"
               >
-                <div className="relative aspect-[4/5] overflow-hidden">
+                <div className="relative aspect-[3/4] overflow-hidden">
                   <Image
                     src={portraits[i] ?? portraits[0]}
                     alt=""
                     fill
-                    className="object-cover transition duration-700 hover:scale-105"
+                    className="object-cover transition duration-[1.1s] ease-out hover:scale-[1.03]"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-jintian-mahogany/55 via-transparent to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-jintian-black/25 via-transparent to-transparent" />
                 </div>
-                <div className="space-y-3 px-6 py-7">
-                  <p className="text-[11px] font-semibold uppercase tracking-label text-jintian-mahogany/70">
+                <div className="flex flex-1 flex-col px-7 py-8">
+                  <p className="text-[10px] font-medium uppercase tracking-label text-jintian-black/45">
                     {f.role}
                   </p>
-                  <h3 className="font-serif text-2xl text-jintian-mahogany">{f.name}</h3>
-                  <p className="font-sans text-xs font-medium leading-relaxed text-jintian-black/65 md:text-sm">
+                  <h3 className="mt-4 font-serif text-2xl tracking-editorial text-jintian-mahogany">
+                    {f.name}
+                  </h3>
+                  <p className="mt-4 font-sans text-[13px] font-normal leading-[1.75] text-jintian-black/60">
                     {f.bio}
                   </p>
                 </div>
