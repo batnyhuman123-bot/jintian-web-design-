@@ -3,27 +3,42 @@
 @tailwind utilities;
 
 :root {
-  --nadi-divider-hero: rgba(255, 255, 255, 0.22);
-  --nadi-divider-soft: rgba(0, 0, 0, 0.06);
+  --jintian-mahogany: #420d09;
+  --jintian-cream: #faf7f2;
+  --jintian-bronze: #b8956a;
+  --jintian-glow: rgba(255, 255, 255, 0.06);
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-jintian-cream text-jintian-black antialiased;
+  }
+  ::selection {
+    @apply bg-jintian-mahogany/20 text-jintian-mahogany;
+  }
 }
 
 @layer utilities {
-  .animation-delay-100 {
-    animation-delay: 0.1s;
+  .text-balance {
+    text-wrap: balance;
   }
-  .animation-delay-200 {
-    animation-delay: 0.2s;
+  .grain-overlay {
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
   }
-  .animation-delay-300 {
-    animation-delay: 0.3s;
+  .glass-panel {
+    @apply border border-white/40 bg-white/10 shadow-glass backdrop-blur-xl;
   }
-  .animation-delay-400 {
-    animation-delay: 0.4s;
+  .glass-panel-dark {
+    @apply border border-white/10 bg-black/25 shadow-glass backdrop-blur-2xl;
   }
-  .animation-delay-500 {
-    animation-delay: 0.5s;
+  .nav-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:after:scale-x-100;
   }
-  .opacity-0-animate {
-    opacity: 0;
+  .nav-underline-mahogany {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-left after:scale-x-0 after:bg-jintian-mahogany after:transition-transform after:duration-300 hover:after:scale-x-100;
   }
 }

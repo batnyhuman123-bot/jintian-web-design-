@@ -1,5 +1,5 @@
-import { NadiStoryPage } from "@/components/nadi/NadiStoryPage";
+import { JintianLanding } from "@/components/jintian/JintianLanding";
 
 export default function Home() {
-  return <NadiStoryPage />;
+  return <JintianLanding />;
 }
