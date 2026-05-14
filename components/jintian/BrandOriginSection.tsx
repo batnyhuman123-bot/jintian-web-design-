@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Leaf, Mountain, Sun } from "lucide-react";
-import Image from "next/image";
 import { useRef } from "react";
 import { Reveal } from "./Reveal";
 import { cn } from "@/lib/utils";
@@ -26,68 +25,115 @@ const cards = [
 ];
 
 export function BrandOriginSection() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-3%", "4%"]);
+  const wordmarkY = useTransform(scrollYProgress, [0, 0.45, 1], [18, 0, -14]);
 
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-jintian-cream py-32 md:py-44 lg:py-52"
+      className="relative overflow-hidden bg-jintian-cream py-28 md:py-36 lg:py-44"
     >
-      <motion.div style={{ y }} className="pointer-events-none absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2000&q=80"
-          alt=""
-          fill
-          className="object-cover opacity-[0.14] saturate-[0.55]"
-          sizes="100vw"
-          priority={false}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-jintian-cream via-jintian-cream/92 to-jintian-cream" />
-      </motion.div>
+      {/* Soft studio lighting — brand palette only */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-10%,rgba(255,255,255,0.55),transparent_52%),radial-gradient(ellipse_70%_45%_at_80%_100%,rgba(66,13,9,0.04),transparent_55%)]"
+      />
+      <div
+        aria-hidden
+        className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.35] mix-blend-multiply"
+      />
 
-      <div className="relative z-10 mx-auto max-w-[1120px] px-8 md:px-12 lg:px-16">
-        <Reveal className="text-center">
-          <h2 className="font-serif text-5xl tracking-[0.22em] text-jintian-mahogany sm:text-6xl md:text-7xl">
-            JINTIAN
-          </h2>
-          <p className="mx-auto mt-8 max-w-md font-sans text-[13px] font-normal leading-relaxed tracking-wide text-jintian-black/60 md:text-sm">
-            JINTIAN means &ldquo;Today&rdquo; in Mandarin
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.1} className="mx-auto mt-20 max-w-2xl">
-          <div className="flex items-center gap-6 md:gap-10">
-            <span className="h-px flex-1 bg-jintian-black/[0.1]" />
-            <p className="shrink text-center font-serif text-xl italic leading-snug text-jintian-mahogany md:text-2xl">
-              &ldquo;Today is where strength begins&rdquo;
+      <div className="relative z-10 mx-auto w-full max-w-[min(100%,1440px)] px-6 sm:px-10 lg:px-16 xl:px-20">
+        {/* Top label — editorial top-left */}
+        <Reveal y={10} className="w-full">
+          <div className="inline-flex flex-col items-start gap-2.5">
+            <p className="font-sans text-[10px] font-medium uppercase tracking-[0.14em] text-jintian-mahogany">
+              OUR STORY
             </p>
-            <span className="h-px flex-1 bg-jintian-black/[0.1]" />
+            <span className="h-px w-9 bg-jintian-mahogany/90" aria-hidden />
           </div>
         </Reveal>
 
-        <div className="mt-24 grid gap-8 md:grid-cols-3 md:gap-10 lg:gap-12">
+        {/* Hero wordmark — typography as the visual */}
+        <Reveal y={20} className="mt-10 w-full md:mt-14 lg:mt-16">
+          <motion.h2
+            style={{ y: wordmarkY }}
+            className="w-full text-center font-serif font-normal tracking-[0.18em] text-jintian-mahogany antialiased sm:tracking-[0.2em] md:tracking-[0.22em] lg:tracking-[0.24em]"
+          >
+            <span className="block text-[clamp(3.25rem,16.5vw,13.5rem)] leading-[0.92]">
+              JINTIAN
+            </span>
+          </motion.h2>
+        </Reveal>
+
+        <Reveal y={12} delay={0.06} className="mx-auto mt-12 max-w-xl text-center md:mt-14 lg:mt-16">
+          <p className="font-sans text-[13px] font-medium leading-relaxed text-jintian-black/50 md:text-sm">
+            JINTIAN means{" "}
+            <span className="font-medium text-jintian-mahogany">&ldquo;Today&rdquo;</span>{" "}
+            in Mandarin
+          </p>
+        </Reveal>
+
+        {/* Quote — warm metallic hairlines (reads like campaign gold, built from mahogany + cream) */}
+        <Reveal y={12} delay={0.1} className="mx-auto mt-14 max-w-3xl md:mt-16 lg:mt-20">
+          <div className="flex items-center justify-center gap-5 sm:gap-8 md:gap-10">
+            <span
+              className="h-px min-w-[2.5rem] flex-1 max-w-[6rem] bg-gradient-to-r from-transparent via-jintian-mahogany/35 to-jintian-mahogany/55 sm:max-w-[8rem]"
+              aria-hidden
+            />
+            <p className="shrink text-center font-serif text-lg font-normal italic leading-snug tracking-[0.02em] text-jintian-mahogany sm:text-xl md:text-2xl">
+              &ldquo;Today is where strength begins&rdquo;
+            </p>
+            <span
+              className="h-px min-w-[2.5rem] flex-1 max-w-[6rem] bg-gradient-to-l from-transparent via-jintian-mahogany/35 to-jintian-mahogany/55 sm:max-w-[8rem]"
+              aria-hidden
+            />
+          </div>
+        </Reveal>
+
+        <Reveal y={10} delay={0.12} className="mx-auto mt-12 text-center md:mt-14">
+          <p className="font-serif text-[11px] font-normal uppercase tracking-[0.32em] text-jintian-mahogany sm:text-xs sm:tracking-[0.36em] md:tracking-[0.4em]">
+            START YOUR JOURNEY TODAY.
+          </p>
+        </Reveal>
+
+        {/* Feature cards */}
+        <div className="mx-auto mt-20 grid max-w-6xl gap-6 sm:mt-24 md:mt-28 md:grid-cols-3 md:gap-8 lg:mt-32 lg:gap-10">
           {cards.map((c, i) => (
-            <Reveal key={c.title} delay={0.06 * i}>
+            <Reveal key={c.title} y={16} delay={0.08 + i * 0.06}>
               <motion.div
-                whileHover={{ y: -3 }}
-                transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+                initial={false}
+                animate={{ y: [0, -2.5, 0] }}
+                transition={{
+                  duration: 9 + i * 0.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.4,
+                }}
+                whileHover={{ y: -6 }}
                 className={cn(
-                  "flex h-full flex-col border border-jintian-black/[0.08] bg-white/50 p-9 shadow-card backdrop-blur-[2px]",
-                  "rounded-lg md:rounded-md",
+                  "group relative flex h-full min-h-[280px] flex-col items-center rounded-2xl border border-jintian-black/[0.06] bg-white/65 px-8 py-10 text-center shadow-[0_1px_0_rgba(255,255,255,0.85)_inset,0_18px_48px_-28px_rgba(0,0,0,0.08)] backdrop-blur-sm transition-shadow duration-500 md:min-h-[300px] md:px-10 md:py-12 lg:rounded-[1.25rem]",
+                  "hover:border-jintian-black/[0.1] hover:shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_28px_56px_-24px_rgba(66,13,9,0.12)]",
                 )}
               >
-                <div className="mb-8 inline-flex w-fit border border-jintian-black/[0.08] bg-jintian-cream/80 p-3.5 text-jintian-mahogany">
-                  <c.icon className="h-5 w-5" strokeWidth={1} />
-                </div>
-                <p className="text-[10px] font-medium uppercase tracking-label text-jintian-black/50">
+                <span
+                  className="mb-8 inline-flex text-jintian-mahogany transition-[filter,transform] duration-500 group-hover:scale-[1.04] group-hover:drop-shadow-[0_0_20px_rgba(66,13,9,0.18)]"
+                  aria-hidden
+                >
+                  <c.icon className="h-7 w-7" strokeWidth={1} />
+                </span>
+                <p className="font-serif text-sm font-normal uppercase tracking-[0.28em] text-jintian-mahogany">
                   {c.title}
                 </p>
-                <p className="mt-4 font-sans text-[13px] font-normal leading-[1.75] text-jintian-black/70">
+                <span
+                  className="mt-3 h-px w-10 bg-gradient-to-r from-transparent via-jintian-mahogany/45 to-transparent"
+                  aria-hidden
+                />
+                <p className="mt-6 max-w-[14rem] font-sans text-[13px] font-medium leading-[1.75] text-jintian-black/55">
                   {c.body}
                 </p>
               </motion.div>
