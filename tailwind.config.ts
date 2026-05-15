@@ -14,11 +14,18 @@ const config: Config = {
           mahogany: "#420D09",
           black: "#000000",
           white: "#FFFFFF",
+          showcase: {
+            bg: "#340D07",
+            gold: "#C89B5A",
+            text: "#F5EFE8",
+            bronze: "#6A3A1F",
+          },
         },
       },
       fontFamily: {
         sans: ["var(--font-montserrat)", "system-ui", "sans-serif"],
         serif: ["var(--font-cormorant)", "ui-serif", "Georgia", "serif"],
+        display: ["var(--font-playfair)", "ui-serif", "Georgia", "serif"],
       },
       letterSpacing: {
         luxury: "0.32em",
